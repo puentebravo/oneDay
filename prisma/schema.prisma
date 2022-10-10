@@ -15,7 +15,9 @@ model SavedDates {
   id String @id @unique @default(uuid())
   title String
   date DateTime 
-  weather Json
+  high String
+  low String
+  weather String
   story String
   photoSrc String
 }
