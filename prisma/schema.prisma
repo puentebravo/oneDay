@@ -10,15 +10,13 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-
 model SavedDates {
-  id String @id @unique @default(uuid())
-  title String
-  date DateTime 
-  high String
-  low String
-  weather String
-  story String
+  id       String   @id @unique @default(uuid())
+  title    String
+  date     DateTime
+  high     String
+  low      String
+  weather  String
+  story    String
   photoSrc String
 }
-
