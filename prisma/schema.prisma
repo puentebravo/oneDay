@@ -13,7 +13,7 @@ datasource db {
 model SavedDates {
   id       String   @id @unique @default(uuid())
   title    String
-  date     DateTime
+  date     DateTime @db.Date
   high     String
   low      String
   weather  String
