@@ -22,7 +22,6 @@ router.post(
     "story",
     "photoSrc",
   ]).isAscii(),
-  body("date").isDate(),
   async (req: Request, res: Response) => {
     const errors = validationResult(req);
 
@@ -33,7 +32,7 @@ router.post(
     const data = await prisma.savedDates.create({
       data: {
         title: req.body.title,
-        date: req.body.date,
+        date: new Date(req.body.date),
         high: req.body.high,
         low: req.body.low,
         weather: req.body.weather,
@@ -45,5 +44,24 @@ router.post(
     res.json(data);
   }
 );
+
+
+
+router.delete("/api/deleteDate/:id", async (req: Request, res: Response) => {
+  
+  try {
+    const deletedPost = await prisma.savedDates.delete({
+      where: {
+        id: req.params.id
+      }
+    })
+  
+      res.json(deletedPost)
+  } catch(error) {
+    res.status(404).json(error)
+  }
+ 
+
+})
 
 module.exports = router
