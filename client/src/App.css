@@ -1,3 +1,12 @@
+:root {
+  --alabaster: #E0E2DB;
+  --cobalt: #3D348B;
+  --slate: #717C89;
+  --gold: #E6AF2E;
+  --space: #191716;
+}
+
+
 .App {
   text-align: center;
 }
