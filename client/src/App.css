@@ -17,10 +17,13 @@ body {
   font-family: Helvetica, Arial, sans-serif;
 }
 
+/* Navbar styling */
+
 nav {
   position: fixed;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   top: 0;
   width: 100vw;
   height: 50px;
@@ -36,7 +39,6 @@ nav h1 {
   list-style: none;
   position: relative;
   display: flex;
-  justify-self: flex-end;
   margin: 10px;
   color: var(--gold);
   flex-direction: row;
@@ -56,14 +58,13 @@ nav h1 {
   color: var(--alabaster);
 }
 
-.inactive {
-  color: var(--slate);
-}
+
 
 
 #navList li {
-  margin: 5px;
+  margin: 10px;
 }
+
 
 
 
