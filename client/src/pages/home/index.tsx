@@ -1,13 +1,18 @@
-import React from "react";
+import React, {useState} from "react";
 import Navbar from "../../components/navbar";
-import WeatherContainer from "../../components/weatherContainer";
+import SearchBar from "../../components/searchBar";
+import "./home.css"
 
 
 function Home() {
+
+    const [city, setCity] = useState()
+
+
     return (
         <>
         <Navbar />
-        <WeatherContainer />
+        <SearchBar city={city} setCity={setCity}/>
         </>
     )
 }
