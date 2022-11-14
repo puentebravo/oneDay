@@ -1,8 +1,8 @@
 :root {
-  --alabaster: #E0E2DB;
-  --cobalt: #3D348B;
-  --slate: #717C89;
-  --gold: #E6AF2E;
+  --alabaster: #e0e2db;
+  --cobalt: #3d348b;
+  --slate: #717c89;
+  --gold: #e6af2e;
   --space: #191716;
 }
 
@@ -10,7 +10,6 @@
   font-family: Neon;
   src: url("./assets/neon-future.regular.ttf");
 }
-
 
 body {
   background-color: var(--space);
@@ -33,7 +32,6 @@ nav {
 nav h1 {
   margin: 10px;
 }
-
 
 #navList {
   list-style: none;
@@ -58,15 +56,35 @@ nav h1 {
   color: var(--alabaster);
 }
 
-
-
-
 #navList li {
   margin: 10px;
 }
 
+/* button styles */
 
+.button {
+  width: 80px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+  color: #000;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin: 10px;
+  cursor: pointer;
+  display: inline-block;
+  background-color: transparent;
+  border: 3px solid #00d7c3;
+  border-radius: 5px;
+  -webkit-transition: all 0.15s ease-in-out;
+  transition: all 0.15s ease-in-out;
+  color: #00d7c3;
+}
 
+.button:hover {
+  box-shadow: 0 0 10px 0 #00d7c3 inset, 0 0 20px 2px #00d7c3;
+  border: 3px solid #00d7c3;
+}
 
 .font-neon {
   font-family: Neon;
@@ -79,48 +97,24 @@ nav h1 {
 .glow {
   font-size: 36px;
   color: var(--alabaster);
-  text-shadow:  
-  0 0 7px var(--alabaster),
-  0 0 10px var(--alabaster),
-  0 0 21px var(--alabaster),
-  0 0 42px var(--gold),
-  0 0 82px var(--gold),
-  0 0 92px var(--gold),
-  0 0 102px var(--gold),
-  0 0 151px var(--gold);
+  text-shadow: 0 0 7px var(--alabaster), 0 0 10px var(--alabaster),
+    0 0 21px var(--alabaster), 0 0 42px var(--gold), 0 0 82px var(--gold),
+    0 0 92px var(--gold), 0 0 102px var(--gold), 0 0 151px var(--gold);
   animation: pulse 2.5s infinite alternate;
 }
 
 @keyframes pulse {
-
   100% {
+    text-shadow: 0 0 4px var(--alabaster), 0 0 11px var(--alabaster),
+      0 0 19px var(--alabaster), 0 0 40px var(--gold), 0 0 80px var(--gold),
+      0 0 90px var(--gold), 0 0 100px var(--gold), 0 0 150px var(--gold);
+  }
 
-    text-shadow:
-    0 0 4px var(--alabaster),
-    0 0 11px var(--alabaster),
-    0 0 19px var(--alabaster),
-    0 0 40px var(--gold),
-    0 0 80px var(--gold),
-    0 0 90px var(--gold),
-    0 0 100px var(--gold),
-    0 0 150px var(--gold);
-
-}
-
- 0% {
-
-  text-shadow:
-  0 0 2px var(--alabaster),
-  0 0 4px var(--alabaster),
-  0 0 6px var(--alabaster),
-  0 0 10px var(--gold),
-  0 0 45px var(--gold),
-  0 0 55px var(--gold),
-  0 0 70px var(--gold),
-  0 0 80px var(--gold);
-
-}
-  
+  0% {
+    text-shadow: 0 0 2px var(--alabaster), 0 0 4px var(--alabaster),
+      0 0 6px var(--alabaster), 0 0 10px var(--gold), 0 0 45px var(--gold),
+      0 0 55px var(--gold), 0 0 70px var(--gold), 0 0 80px var(--gold);
+  }
 }
 
 /* .App {
@@ -161,7 +155,6 @@ nav h1 {
     transform: rotate(360deg);
   }
 } */
-
 
 @media screen and (prefers-reduced-motion) {
   .glow {
