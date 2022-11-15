@@ -1,7 +1,12 @@
+import express from "express"
 import { PrismaClient } from "@prisma/client";
 import { Request, Response } from "express";
 import { body, validationResult } from "express-validator";
-const router = require("express").Router();
+const fetch = require("node-fetch")
+import * as dotenv from 'dotenv'
+dotenv.config()
+
+const router = express.Router()
 
 const prisma = new PrismaClient({ log: ["query", "error"] });
 
@@ -10,6 +15,14 @@ router.get("/api/getSaved", async (req: Request, res: Response) => {
 
   res.json(saved);
 });
+
+router.get("/api/getLocalWeather/:lat/:lon", async (req: Request, res: Response) => {
+  const localWeather = await fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${req.params.lat}&lon=${req.params.lon}&units=metric&appid=${process.env.API_KEY}`)
+
+  const data = await localWeather.json()
+
+  res.json(data)
+})
 
 router.post(
   "/api/saveDate",
