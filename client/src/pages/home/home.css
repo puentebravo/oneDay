@@ -10,17 +10,13 @@
   position: relative;
   top: 50px;
   margin: auto;
-  width: 30vw;
+  width: 400px;
   margin-top: 50px;
-}
-
-#searchBar form {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+  display: flex;
 }
 
 #citySearch {
+  grid-area: "form";
   width: 100%;
   margin: 10px;
   border-radius: 5px;
@@ -58,4 +54,8 @@
   border-bottom: 1px solid #575756;
   border-radius: 0;
   background-position: 100% center;
+}
+
+#searchBtn {
+  margin-left: -10px;
 }
