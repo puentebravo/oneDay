@@ -33,6 +33,22 @@ nav h1 {
   margin: 10px;
 }
 
+/* .background-night {
+  background: var(--space);
+  background: -webkit-linear-gradient(
+    0deg,
+    var(--space) 0%,
+    var(--cobalt) 100%
+  );
+  background: linear-gradient(0deg, var(--space) 0%, var(--cobalt) 100%);
+}
+
+.background-day {
+  background: var(--space);
+  background: -webkit-linear-gradient(0deg, var(--space) 0%, var(--gold) 100%);
+  background: linear-gradient(0deg, var(--space) 0%, var(--gold) 100%);
+} */
+
 #navList {
   list-style: none;
   position: relative;
@@ -74,16 +90,16 @@ nav h1 {
   cursor: pointer;
   display: inline-block;
   background-color: transparent;
-  border: 3px solid #00d7c3;
+  border: 3px solid var(--gold);
   border-radius: 5px;
   -webkit-transition: all 0.15s ease-in-out;
   transition: all 0.15s ease-in-out;
-  color: #00d7c3;
+  color: var(--gold);
 }
 
 .button:hover {
-  box-shadow: 0 0 10px 0 #00d7c3 inset, 0 0 20px 2px #00d7c3;
-  border: 3px solid #00d7c3;
+  box-shadow: 0 0 10px 0 var(--gold) inset, 0 0 20px 2px var(--gold);
+  border: 3px solid var(--gold);
 }
 
 .font-neon {
@@ -93,6 +109,8 @@ nav h1 {
 .text-left {
   text-align: start;
 }
+
+/* animations */
 
 .glow {
   font-size: 36px;
@@ -132,20 +150,6 @@ nav h1 {
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
 
 @keyframes App-logo-spin {
   from {
