@@ -24,6 +24,24 @@ router.get("/api/getLocalWeather/:lat/:lon", async (req: Request, res: Response)
   res.json(data)
 })
 
+router.get("/api/getTargetWeather/:city", async (req: Request, res: Response) => {
+  const cityName = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${req.params.city}&limit=1&appid=${process.env.API_KEY}`)
+
+  const cityData = await cityName.json()
+
+  const coords = {
+    lat: cityData[0].lat,
+    lon: cityData[0].lon
+  }
+
+  const targetWeather = await fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${coords.lat}&lon=${coords.lon}&units=metric&appid=${process.env.API_KEY}`)
+
+  const targetData = await targetWeather.json()
+
+  res.json(targetData)
+
+})
+
 router.post(
   "/api/saveDate",
   body([
