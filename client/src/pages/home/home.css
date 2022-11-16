@@ -6,6 +6,8 @@
   --space: #191716;
 }
 
+/* searchbar styling */
+
 #searchBar {
   position: relative;
   top: 50px;
@@ -55,6 +57,8 @@
   border-radius: 0;
   background-position: 100% center;
 }
+
+/* button styling */
 
 #searchBtn {
   margin-left: -10px;
