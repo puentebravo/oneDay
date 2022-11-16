@@ -17,7 +17,14 @@ function Home() {
 
     const [weatherData, setWeatherData] = useState({})
 
+    async function getCityWeather(city: string) {
+        const search = await fetch(`/api/getTargetWeather/${city}`)
 
+        const searchReturn = await search.json()
+
+        setWeatherData(searchReturn)
+
+    }
 
     useEffect(() => {
         if ("geolocation" in navigator) {
@@ -25,7 +32,7 @@ function Home() {
                 setCoords({lon: position.coords.longitude, lat: position.coords.latitude})
             })
         } else {
-            setCoords({lon: 0, lat: 0})
+            console.log("Geolocation disabled.")
         }
 
         async function fetchWeather(coordinates:Coords) {
@@ -34,18 +41,10 @@ function Home() {
             const jsonData = await data.json()
 
             setWeatherData(jsonData)
-
-            if (jsonData) {
-                console.log(weatherData)
-            } else {
-                console.log("Loading")
-            }
             
         }
 
         fetchWeather(coords)
-
-        
 
     }, [])
 
@@ -53,7 +52,7 @@ function Home() {
     return (
         <>
         <Navbar />
-        <SearchBar city={city} setCity={setCity}/>
+        <SearchBar city={city} setCity={setCity} getCityWeather={getCityWeather}/>
         </>
     )
 }
