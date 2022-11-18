@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react";
+import CurrentTemp from "../../components/currentTemp";
 import Navbar from "../../components/navbar";
 import SearchBar from "../../components/searchBar";
 import "./home.css"
@@ -53,6 +54,9 @@ function Home() {
         <>
         <Navbar />
         <SearchBar city={city} setCity={setCity} getCityWeather={getCityWeather}/>
+        <main id="weatherContainer">
+            <CurrentTemp />
+        </main>
         </>
     )
 }

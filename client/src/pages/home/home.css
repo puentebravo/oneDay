@@ -63,3 +63,26 @@
 #searchBtn {
   margin-left: -10px;
 }
+
+/* Grid styling */
+
+#weatherContainer {
+  display: grid;
+  grid-template-areas: 
+   "ctemp fiveDay fiveDay"
+   "ctemp fiveDay fiveDay"
+   "hourly hourly hourly"
+   "hourly hourly hourly";
+}
+
+#cTemp {
+  grid-area: ctemp;
+}
+
+#fiveDay {
+  grid-area: fiveDday;
+}
+
+#hourly {
+  grid-area: hourly;
+}
