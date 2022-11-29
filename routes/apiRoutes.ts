@@ -20,7 +20,7 @@ router.get("/api/getLocalWeather/:lat/:lon", async (req: Request, res: Response)
   const localWeather = await fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${req.params.lat}&lon=${req.params.lon}&units=metric&appid=${process.env.API_KEY}`)
 
   const data = await localWeather.json()
-
+  console.log("Route: getLocalWeather reached")
   res.json(data)
 })
 
@@ -38,6 +38,7 @@ router.get("/api/getTargetWeather/:city", async (req: Request, res: Response) =>
 
   const targetData = await targetWeather.json()
 
+  console.log("Route: getTargetWeather reached")
   res.json(targetData)
 
 })
@@ -72,6 +73,7 @@ router.post(
       },
     });
 
+    console.log("Route: saveDate reached")
     res.json(data);
   }
 );
@@ -86,7 +88,7 @@ router.delete("/api/deleteDate/:id", async (req: Request, res: Response) => {
         id: req.params.id
       }
     })
-  
+      console.log("Route: Delete Date reached")
       res.json(deletedPost)
   } catch(error) {
     res.status(404).json(error)
