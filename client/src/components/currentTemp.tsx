@@ -31,8 +31,8 @@ function CurrentTemp(props: WeatherObject) {
                 <ul>
                     <li>Feels Like: {props.feelsLike}</li>
                     <li>Wind Speed: {props.windSpeed}</li>
-                    <li>Sunrise: {sunriseTime.toLocaleTimeString("en-US")} </li>
-                    <li>Sunset: {sunsetTime.toLocaleTimeString("en-US")}</li>
+                    <li>Sunrise: {sunriseTime.toLocaleTimeString("en-UK")} </li>
+                    <li>Sunset: {sunsetTime.toLocaleTimeString("en-UK")}</li>
                     <li>UV Index: {props.UVI}</li>
                     <li>Humidity: {props.UVI}</li>
                 </ul>
