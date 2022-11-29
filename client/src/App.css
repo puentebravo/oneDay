@@ -96,6 +96,20 @@ nav h1 {
   text-align: start;
 }
 
+/* loader style */
+
+.progress {
+  width: 100px;
+  height: 20px;
+  background: linear-gradient(#3d348b 0 0) left/0% 100% no-repeat
+      #e0e2db;
+  animation: progressLoader 2s infinite linear;
+  position: absolute;
+  top: 50vh;
+  margin-left: 45vw;
+  margin-right: 50vw;
+}
+
 /* animations */
 
 .glow {
@@ -118,6 +132,12 @@ nav h1 {
     text-shadow: 0 0 2px var(--alabaster), 0 0 4px var(--alabaster),
       0 0 6px var(--alabaster), 0 0 10px var(--gold), 0 0 45px var(--gold),
       0 0 55px var(--gold), 0 0 70px var(--gold), 0 0 80px var(--gold);
+  }
+}
+
+@keyframes progressLoader {
+  100% {
+     background-size: 100% 100%;
   }
 }
 
