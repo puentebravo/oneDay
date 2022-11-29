@@ -87,13 +87,16 @@ function Home() {
 
     const [coords, setCoords] = useState<Coords>({ lon: 0, lat: 0 })
 
-    const [city, setCity] = useState()
+    const [city, setCity] = useState<string>()
 
     const [weatherData, setWeatherData] = useState<weatherResponse>()
 
 
     async function getCityWeather(city: string) {
-        const search = await fetch(`/api/getTargetWeather/${city}`)
+
+        let sanitizedCity: string = city.toLowerCase().trim() 
+
+        const search = await fetch(`/api/getTargetWeather/${sanitizedCity}`)
 
         const searchReturn = await search.json()
 
