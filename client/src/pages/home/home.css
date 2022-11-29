@@ -64,10 +64,14 @@
   margin-left: -10px;
 }
 
-/* Grid styling */
+/* weather container styling */
 
 #weatherContainer {
+  color: var(--alabaster);
+  margin-top: 100px;
+  padding: 10px;
   display: grid;
+  border: red solid;
   grid-template-areas: 
    "ctemp fiveDay fiveDay"
    "ctemp fiveDay fiveDay"
@@ -75,8 +79,28 @@
    "hourly hourly hourly";
 }
 
+#tempHeader {
+  border: blue solid;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 10px;
+  font-size: x-large;
+}
+
+#weatherList{
+  margin: 10px;
+  border: violet solid;
+  font-size: large;
+}
+
+#weatherList li {
+  margin-top: 5px;
+}
+
 #cTemp {
   grid-area: ctemp;
+
 }
 
 #fiveDay {
