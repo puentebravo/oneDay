@@ -91,6 +91,8 @@ function Home() {
 
     const [weatherData, setWeatherData] = useState<weatherResponse>()
 
+    const [units, setUnits] = useState<string>("metric")
+
 
     async function getCityWeather(city: string) {
 
@@ -104,27 +106,29 @@ function Home() {
 
     }
 
+    async function fetchWeather(coordinates: Coords, units: string) {
+        const data = await fetch(`/api/getLocalWeather/${coordinates.lat}/${coordinates.lon}/${units}`)
+
+        const jsonData = await data.json()
+
+        setWeatherData(jsonData)
+        console.log(jsonData)
+    }
+
     useEffect(() => {
         if ("geolocation" in navigator) {
             navigator.geolocation.getCurrentPosition((position) => {
                 setCoords({ lon: position.coords.longitude, lat: position.coords.latitude })
             })
+
+            fetchWeather(coords, units)
         } else {
             console.log("Geolocation disabled.")
+            fetchWeather(coords, units)
         }
 
-        async function fetchWeather(coordinates: Coords) {
-            const data = await fetch(`/api/getLocalWeather/${coordinates.lat}/${coordinates.lon}`)
 
-            const jsonData = await data.json()
-
-            setWeatherData(jsonData)
-            console.log(jsonData)
-        }
-
-        fetchWeather(coords)
-
-    }, [coords])
+    }, [])
 
 
     return (
@@ -135,7 +139,7 @@ function Home() {
             {weatherData ? 
             
             <main id="weatherContainer">
-                <CurrentTemp current={weatherData.current.temp} icon={weatherData.current.weather[0].icon} sunrise=     {weatherData.current.sunrise} sunset={weatherData.current.sunset} temp={weatherData.current.temp} feelsLike={weatherData.current.feels_like} windSpeed={weatherData.current.wind_speed} UVI={weatherData.current.uvi} humidity={weatherData.current.humidity}/>
+                <CurrentTemp current={weatherData.current.temp} icon={weatherData.current.weather[0].icon} sunrise=     {weatherData.current.sunrise} sunset={weatherData.current.sunset} temp={weatherData.current.temp} feelsLike={weatherData.current.feels_like} windSpeed={weatherData.current.wind_speed} UVI={weatherData.current.uvi} humidity={weatherData.current.humidity} units={units}/>
 
 
             </main>
