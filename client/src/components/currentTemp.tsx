@@ -9,32 +9,40 @@ interface WeatherObject {
     feelsLike: number,
     windSpeed: number,
     UVI: number,
-    humidity: number
+    humidity: number,
+    units: string
 }
 
 function CurrentTemp(props: WeatherObject) {
 
     
-    const sunriseTime = new Date(props.sunrise)
-    const sunsetTime = new Date(props.sunset)
+    // const sunriseTime = new Date(props.sunrise)
+    // const sunsetTime = new Date(props.sunset)
+    const imgUrl = `http://openweathermap.org/img/wn/${props.icon}@2x.png`
+    let unit;
     
+    if (props.units === "metric") {
+        unit = "C"
+    } else {
+        unit = "F"
+    }
 
     
 
     return (
-        <section id="cTemp">
+        <section id="cTemp" className="card">
             <div id="tempHeader">
-                <h2> Temperature: {props.current}</h2>
-                <img src={props.icon} alt="icon representing today's weather" id="weatherIcon" />
+                <h2> Temperature: {props.current}° {unit}</h2>
+                <img src={imgUrl} alt="icon representing today's weather" id="weatherIcon" />
             </div>
             <div id="weatherList">
                 <ul>
-                    <li>Feels Like: {props.feelsLike}</li>
-                    <li>Wind Speed: {props.windSpeed}</li>
-                    <li>Sunrise: {sunriseTime.toLocaleTimeString("en-UK")} </li>
-                    <li>Sunset: {sunsetTime.toLocaleTimeString("en-UK")}</li>
+                    <li>Feels Like: {props.feelsLike}° {unit}</li>
+                    <li>Wind Speed: {props.windSpeed} KM/H</li>
+                    {/* <li>Sunrise: {sunriseTime.toLocaleTimeString("en-US", {hour12: false, timeStyle: "short"})} </li>
+                    <li>Sunset: {sunsetTime.toLocaleTimeString("en-US", {hour12: false, timeStyle: "short"})}</li> */}
                     <li>UV Index: {props.UVI}</li>
-                    <li>Humidity: {props.UVI}</li>
+                    <li>Humidity: {props.humidity}%</li>
                 </ul>
             </div>
 
