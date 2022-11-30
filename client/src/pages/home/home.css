@@ -71,7 +71,6 @@
   margin-top: 100px;
   padding: 10px;
   display: grid;
-  border: red solid;
   grid-template-areas: 
    "ctemp fiveDay fiveDay"
    "ctemp fiveDay fiveDay"
@@ -80,7 +79,6 @@
 }
 
 #tempHeader {
-  border: blue solid;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -88,9 +86,12 @@
   font-size: x-large;
 }
 
+#tempHeader h2 {
+  margin-top: 40px;
+}
+
 #weatherList{
   margin: 10px;
-  border: violet solid;
   font-size: large;
 }
 
