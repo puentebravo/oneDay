@@ -16,15 +16,15 @@ router.get("/api/getSaved", async (req: Request, res: Response) => {
   res.json(saved);
 });
 
-router.get("/api/getLocalWeather/:lat/:lon", async (req: Request, res: Response) => {
-  const localWeather = await fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${req.params.lat}&lon=${req.params.lon}&units=metric&appid=${process.env.API_KEY}`)
+router.get("/api/getLocalWeather/:lat/:lon/:units", async (req: Request, res: Response) => {
+  const localWeather = await fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${req.params.lat}&lon=${req.params.lon}&units=${req.params.units}&appid=${process.env.API_KEY}`)
 
   const data = await localWeather.json()
   console.log("Route: getLocalWeather reached")
   res.json(data)
 })
 
-router.get("/api/getTargetWeather/:city", async (req: Request, res: Response) => {
+router.get("/api/getTargetWeather/:city/:units", async (req: Request, res: Response) => {
   const cityName = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${req.params.city}&limit=1&appid=${process.env.API_KEY}`)
 
   const cityData = await cityName.json()
@@ -34,7 +34,7 @@ router.get("/api/getTargetWeather/:city", async (req: Request, res: Response) =>
     lon: cityData[0].lon
   }
 
-  const targetWeather = await fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${coords.lat}&lon=${coords.lon}&units=metric&appid=${process.env.API_KEY}`)
+  const targetWeather = await fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${coords.lat}&lon=${coords.lon}&units=${req.params.units}&appid=${process.env.API_KEY}`)
 
   const targetData = await targetWeather.json()
 
