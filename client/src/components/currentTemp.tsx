@@ -19,12 +19,19 @@ function CurrentTemp(props: WeatherObject) {
     // const sunriseTime = new Date(props.sunrise)
     // const sunsetTime = new Date(props.sunset)
     const imgUrl = `http://openweathermap.org/img/wn/${props.icon}@2x.png`
-    let unit;
+    let tempUnit;
+    let speedUnit;
     
     if (props.units === "metric") {
-        unit = "C"
+        tempUnit = "C"
     } else {
-        unit = "F"
+        tempUnit = "F"
+    }
+
+    if (props.units === "metric") {
+        speedUnit = "KM/H"
+    } else {
+        speedUnit = "MPH"
     }
 
     
@@ -32,13 +39,13 @@ function CurrentTemp(props: WeatherObject) {
     return (
         <section id="cTemp" className="card">
             <div id="tempHeader">
-                <h2> Temperature: {props.current}° {unit}</h2>
+                <h2> Temperature: {props.current}° {tempUnit}</h2>
                 <img src={imgUrl} alt="icon representing today's weather" id="weatherIcon" />
             </div>
             <div id="weatherList">
                 <ul>
-                    <li>Feels Like: {props.feelsLike}° {unit}</li>
-                    <li>Wind Speed: {props.windSpeed} KM/H</li>
+                    <li>Feels Like: {props.feelsLike}° {tempUnit}</li>
+                    <li>Wind Speed: {props.windSpeed} {speedUnit}</li>
                     {/* <li>Sunrise: {sunriseTime.toLocaleTimeString("en-US", {hour12: false, timeStyle: "short"})} </li>
                     <li>Sunset: {sunsetTime.toLocaleTimeString("en-US", {hour12: false, timeStyle: "short"})}</li> */}
                     <li>UV Index: {props.UVI}</li>
