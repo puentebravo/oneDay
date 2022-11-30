@@ -11,6 +11,10 @@
   src: url("./assets/neon-future.regular.ttf");
 }
 
+.font-space {
+  font-family: 'Roboto Mono', monospace;
+}
+
 body {
   background-color: var(--space);
   background-image: url("./assets/images/nasaSatellite.jpg");
