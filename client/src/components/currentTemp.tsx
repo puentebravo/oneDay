@@ -38,7 +38,7 @@ function CurrentTemp(props: WeatherObject) {
     return (
         <section id="cTemp" className="card">
             <div id="tempHeader">
-                <h2 className="font-space"> Temperature: {props.current}° {tempUnit}</h2>
+                <h2 className="font-space"> Current Temperature: {props.current}° {tempUnit}</h2>
                 <img src={imgUrl} alt="icon representing today's weather" id="weatherIcon" />
             </div>
             <div id="weatherList">
