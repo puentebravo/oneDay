@@ -10,7 +10,7 @@
 
 #searchBar {
   position: relative;
-  top: 50px;
+
   margin: auto;
   width: 400px;
   margin-top: 50px;
@@ -64,6 +64,75 @@
   margin-left: -10px;
 }
 
+/* Toggle styling */
+
+.toggle {
+  display: flex;
+  position: relative;
+  width: 7.5rem;
+  height: 2.5rem;
+  background: var(--alabaster);
+  align-self: center;
+  user-select: none;
+  margin: 2rem;
+}
+
+.toggle:after,
+.toggle:before {
+  flex: 1;
+  text-align: center;
+  line-height: 2.5rem;
+}
+
+#uToggle {
+  display: none;
+}
+
+.toggle:after {
+  content: "MTR";
+}
+.toggle:before {
+  content: "IMP";
+}
+
+#switchLabel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  perspective: 1000;
+  cursor: pointer;
+}
+
+.toggleCard {
+  position: relative;
+  background: var(--cobalt);
+  transition: 0.4s;
+  width: 50%;
+  height: 2.5rem;
+  pointer-events: none;
+}
+
+#uToggle:checked + #switchlabel .toggleCard {
+  background: var(--gold);
+}
+
+.slide .toggleCard {
+  transform: translate(0);
+}
+.slide #switchLabel:checked + #switchLabel .toggleCard {
+  transform: translateX(3.75rem);
+}
+
+figure {
+  color: var(--alabaster);
+  flex:1;
+  flex-direction:column;
+  justify-content:center;
+  counter-increment:count;
+}
+
 /* weather container styling */
 
 #weatherContainer {
@@ -71,11 +140,11 @@
   margin-top: 100px;
   padding: 10px;
   display: grid;
-  grid-template-areas: 
-   "ctemp fiveDay fiveDay"
-   "ctemp fiveDay fiveDay"
-   "hourly hourly hourly"
-   "hourly hourly hourly";
+  grid-template-areas:
+    "ctemp fiveDay fiveDay"
+    "ctemp fiveDay fiveDay"
+    "hourly hourly hourly"
+    "hourly hourly hourly";
 }
 
 #tempHeader {
@@ -90,7 +159,7 @@
   margin-top: 40px;
 }
 
-#weatherList{
+#weatherList {
   margin: 10px;
   font-size: large;
 }
@@ -101,7 +170,6 @@
 
 #cTemp {
   grid-area: ctemp;
-
 }
 
 #fiveDay {
