@@ -140,6 +140,8 @@ figure {
   margin-top: 100px;
   padding: 10px;
   display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
   grid-template-areas:
     "ctemp fiveDay fiveDay"
     "ctemp fiveDay fiveDay"
@@ -173,9 +175,22 @@ figure {
 }
 
 #fiveDay {
-  grid-area: fiveDday;
+  grid-area: fiveDay;
+  padding: 20px;
 }
 
 #hourly {
   grid-area: hourly;
+}
+
+#forecastContainer {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.foreCastCard {
+  border-bottom: dotted 1px var(--alabaster);
+  margin: 5px;
+  padding: 5px;
+
 }
