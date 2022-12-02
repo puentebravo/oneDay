@@ -1,21 +1,25 @@
+
 import React from "react";
 
 interface city {
   city: string | undefined;
+  units: string,
   setCity: (params: any) => any;
-  getCityWeather: (params: any) => any
+  getCityWeather: (coords: any, units: any) => any
 }
 
 function SearchBar(props: city) {
 
   function handleInputChange(input: string) {
-    setTimeout(() => {
       props.setCity(input)
-    }, 500);
+      console.log(props.city)
   }
 
   function handleFormSubmit() {
-    props.getCityWeather(props.city);
+
+    console.log("this was clicked")
+    props.getCityWeather(props.city, props.units);
+    props.setCity("")
   }
 
   return (
@@ -26,13 +30,14 @@ function SearchBar(props: city) {
           <input
             id="citySearch"
             type="text"
-            placeholder="Search"
+            placeholder="Input_City"
+            value={props.city}
             onChange={(e) => handleInputChange(e.target.value)}
           />
         </label>
-        
+
       </form>
-      
+
     </section>
   );
 }
