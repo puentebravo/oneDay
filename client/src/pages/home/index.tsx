@@ -5,6 +5,7 @@ import Navbar from "../../components/navbar";
 import SearchBar from "../../components/searchBar";
 import "./home.css"
 import UnitSwitch from "../../components/unitSwitch";
+import FiveDay from "../../components/fiveDay";
 
 
 
@@ -145,6 +146,7 @@ function Home() {
 
                 <main id="weatherContainer">
                     <CurrentTemp current={weatherData.current.temp} icon={weatherData.current.weather[0].icon} sunrise={weatherData.current.sunrise} sunset={weatherData.current.sunset} temp={weatherData.current.temp} feelsLike={weatherData.current.feels_like} windSpeed={weatherData.current.wind_speed} UVI={weatherData.current.uvi} humidity={weatherData.current.humidity} units={units} />
+                    <FiveDay/>
 
 
                 </main>
