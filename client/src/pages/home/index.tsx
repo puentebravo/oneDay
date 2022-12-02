@@ -4,6 +4,7 @@ import ProgressBar from "../../components/progressBar";
 import Navbar from "../../components/navbar";
 import SearchBar from "../../components/searchBar";
 import "./home.css"
+import UnitSwitch from "../../components/unitSwitch";
 
 
 
@@ -83,22 +84,18 @@ interface weatherResponse {
 
 function Home() {
 
-    
-
-    const [coords, setCoords] = useState<Coords>({ lon: 0, lat: 0 })
-
-    const [city, setCity] = useState<string>()
+    const [city, setCity] = useState<string>("")
 
     const [weatherData, setWeatherData] = useState<weatherResponse>()
 
-    const [units, setUnits] = useState<string>("metric")
+    const [units, setUnits] = useState<string>("imperial")
 
 
-    async function getCityWeather(city: string) {
+    async function getCityWeather(city: string, units: string) {
 
-        let sanitizedCity: string = city.toLowerCase().trim() 
+        let sanitizedCity: string = city.toLowerCase().trim()
 
-        const search = await fetch(`/api/getTargetWeather/${sanitizedCity}`)
+        const search = await fetch(`/api/getTargetWeather/${sanitizedCity}/${units}`)
 
         const searchReturn = await search.json()
 
@@ -107,6 +104,7 @@ function Home() {
     }
 
     async function fetchWeather(coordinates: Coords, units: string) {
+
         const data = await fetch(`/api/getLocalWeather/${coordinates.lat}/${coordinates.lon}/${units}`)
 
         const jsonData = await data.json()
@@ -116,15 +114,21 @@ function Home() {
     }
 
     useEffect(() => {
+
+
         if ("geolocation" in navigator) {
             navigator.geolocation.getCurrentPosition((position) => {
-                setCoords({ lon: position.coords.longitude, lat: position.coords.latitude })
+
+                let coords = {
+                    lat: position.coords.latitude,
+                    lon: position.coords.longitude
+                }
+
+                fetchWeather(coords, units)
             })
 
-            fetchWeather(coords, units)
         } else {
             console.log("Geolocation disabled.")
-            fetchWeather(coords, units)
         }
 
 
@@ -134,15 +138,16 @@ function Home() {
     return (
         <>
             <Navbar />
-            <SearchBar city={city} setCity={setCity} getCityWeather={getCityWeather} />
+            <SearchBar city={city} setCity={setCity} getCityWeather={getCityWeather} units={units} />
+            {/* <UnitSwitch /> */}
 
-            {weatherData ? 
-            
-            <main id="weatherContainer">
-                <CurrentTemp current={weatherData.current.temp} icon={weatherData.current.weather[0].icon} sunrise=     {weatherData.current.sunrise} sunset={weatherData.current.sunset} temp={weatherData.current.temp} feelsLike={weatherData.current.feels_like} windSpeed={weatherData.current.wind_speed} UVI={weatherData.current.uvi} humidity={weatherData.current.humidity} units={units}/>
+            {weatherData ?
+
+                <main id="weatherContainer">
+                    <CurrentTemp current={weatherData.current.temp} icon={weatherData.current.weather[0].icon} sunrise={weatherData.current.sunrise} sunset={weatherData.current.sunset} temp={weatherData.current.temp} feelsLike={weatherData.current.feels_like} windSpeed={weatherData.current.wind_speed} UVI={weatherData.current.uvi} humidity={weatherData.current.humidity} units={units} />
 
 
-            </main>
+                </main>
                 : <ProgressBar />
 
             }
