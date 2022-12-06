@@ -7,6 +7,7 @@ import "./home.css"
 import { weatherResponse } from "../../interfaces";
 // import UnitSwitch from "../../components/unitSwitch";
 import FiveDay from "../../components/fiveDay";
+import Hourly from "../../components/hourly";
 
 
 
@@ -67,7 +68,7 @@ function Home() {
         }
 
 
-    }, [])
+    }, [units])
 
 
     return (
@@ -80,7 +81,8 @@ function Home() {
 
                 <main id="weatherContainer">
                     <CurrentTemp current={weatherData.current.temp} icon={weatherData.current.weather[0].icon} sunrise={weatherData.current.sunrise} sunset={weatherData.current.sunset} temp={weatherData.current.temp} feelsLike={weatherData.current.feels_like} windSpeed={weatherData.current.wind_speed} UVI={weatherData.current.uvi} humidity={weatherData.current.humidity} units={units} />
-                    <FiveDay dailyForecasts={weatherData.daily}/>
+                    <Hourly hourly={weatherData.hourly} units={units}/>
+                    <FiveDay dailyForecasts={weatherData.daily} units={units}/>
 
 
                 </main>
