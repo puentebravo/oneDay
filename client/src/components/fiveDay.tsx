@@ -3,7 +3,8 @@ import ForecastCard from "./foreCastCard";
 import { forecastObj } from "../interfaces"
 
 interface forecasts {
-    dailyForecasts: forecastObj[]
+    dailyForecasts: forecastObj[],
+    units: string
 }
 
 
@@ -16,7 +17,8 @@ function FiveDay(props: forecasts) {
             daytime: element.temp.day,
             nighttime: element.temp.night,
             weather: element.weather[0].description,
-            icon: element.weather[0].icon
+            icon: element.weather[0].icon,
+            units: props.units
         }
     })
 
@@ -25,7 +27,7 @@ function FiveDay(props: forecasts) {
             <div id="forecastContainer">
 
                 {daily.map((element, index) => (
-                    <ForecastCard id={index} daytime={element.daytime} date={element.date} nighttime={element.nighttime} weather={element.weather} icon={element.icon}/>
+                    <ForecastCard id={index} daytime={element.daytime} date={element.date} nighttime={element.nighttime} weather={element.weather} icon={element.icon} units={element.units}/>
                 ))}
 
             </div>
