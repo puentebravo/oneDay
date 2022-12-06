@@ -10,7 +10,6 @@
 
 #searchBar {
   position: relative;
-
   margin: auto;
   width: 400px;
   margin-top: 50px;
@@ -125,13 +124,13 @@
   transform: translateX(3.75rem);
 }
 
-figure {
+/* figure {
   color: var(--alabaster);
   flex:1;
   flex-direction:column;
   justify-content:center;
   counter-increment:count;
-}
+} */
 
 /* weather container styling */
 
@@ -143,10 +142,10 @@ figure {
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr;
   grid-template-areas:
-    "ctemp fiveDay fiveDay"
-    "ctemp fiveDay fiveDay"
-    "hourly hourly hourly"
-    "hourly hourly hourly";
+    "ctemp hourly hourly"
+    "ctemp hourly hourly"
+    "fiveDay fiveDay fiveDay"
+    "fiveDay fiveDay fiveDay";
 }
 
 #tempHeader {
@@ -176,7 +175,6 @@ figure {
 
 #fiveDay {
   grid-area: fiveDay;
-  padding: 20px;
 }
 
 #hourly {
@@ -185,7 +183,16 @@ figure {
 
 #forecastContainer {
   display: flex;
-  justify-content: space-evenly;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+#hourlyContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .foreCastCard {
