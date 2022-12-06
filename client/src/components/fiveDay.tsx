@@ -1,17 +1,31 @@
 import React from "react";
-import ForecastContainer from "./foreCastCard";
+import ForecastCard from "./foreCastCard";
+import { forecastObj } from "../interfaces"
+
+interface forecasts {
+    dailyForecasts: forecastObj[]
+}
 
 
-function FiveDay() {
 
+function FiveDay(props: forecasts) {
 
-    const arr = [1 , 2, 3, 4, 5]
+    const daily = props.dailyForecasts.map( element => {
+        return {
+            date: element.dt,
+            daytime: element.temp.day,
+            nighttime: element.temp.night,
+            weather: element.weather[0].description,
+            icon: element.weather[0].icon
+        }
+    })
+
     return (
         <section className="card font-space" id="fiveDay">
             <div id="forecastContainer">
 
-                {arr.map( (element) => (
-                    <ForecastContainer key={element}/>
+                {daily.map((element, index) => (
+                    <ForecastCard id={index} daytime={element.daytime} date={element.date} nighttime={element.nighttime} weather={element.weather} icon={element.icon}/>
                 ))}
 
             </div>
