@@ -15,12 +15,16 @@ interface WeatherObject {
 
 function CurrentTemp(props: WeatherObject) {
 
-    
+
 
     const imgUrl = `http://openweathermap.org/img/wn/${props.icon}@2x.png`
     let tempUnit;
     let speedUnit;
-    
+    const sunriseDtString = new Date(props.sunrise * 1000)
+    const sunsetDtString = new Date(props.sunset * 1000)
+
+
+
     if (props.units === "metric") {
         tempUnit = "C"
     } else {
@@ -33,7 +37,9 @@ function CurrentTemp(props: WeatherObject) {
         speedUnit = "MPH"
     }
 
-    
+
+
+
 
     return (
         <section id="cTemp" className="card">
@@ -47,6 +53,8 @@ function CurrentTemp(props: WeatherObject) {
                     <li>Wind Speed: {props.windSpeed} {speedUnit}</li>
                     <li>UV Index: {props.UVI}</li>
                     <li>Humidity: {props.humidity}%</li>
+                    <li>Sunrise: {sunriseDtString.toLocaleTimeString("en-US", { hour12: false })}</li>
+                    <li>Sunset: {sunsetDtString.toLocaleTimeString("en-US", { hour12: false })}</li>
                 </ul>
             </div>
 
