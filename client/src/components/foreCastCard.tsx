@@ -10,7 +10,7 @@ interface Forecast {
     units: string
 }
 
-function ForecastCard(props: Forecast) {
+function ForecastCard(props: Forecast ) {
 
     const imgUrl = `http://openweathermap.org/img/wn/${props.icon}@2x.png`
     const dtString = new Date(props.date * 1000)
