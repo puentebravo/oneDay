@@ -177,8 +177,20 @@
   grid-area: fiveDay;
 }
 
+#fiveDay h3 {
+  color: var(--gold);
+  text-align: center;
+  font-size: larger;
+}
+
 #hourly {
   grid-area: hourly;
+}
+
+#hourly h3 {
+  color: var(--gold);
+  text-align: center;
+  font-size: larger;
 }
 
 #forecastContainer {
@@ -195,9 +207,21 @@
   justify-content: space-between;
 }
 
+.hourlyCard {
+  vertical-align: middle;
+  border-bottom: dotted 1px var(--alabaster);
+  margin: 5px;
+  padding: 5px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  max-width: 100px;
+}
+
 .foreCastCard {
   border-bottom: dotted 1px var(--alabaster);
   margin: 5px;
   padding: 5px;
-
+  word-wrap: break-word;
+  max-width: 150px;
+  overflow-wrap: break-word;
 }
