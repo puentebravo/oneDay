@@ -24,6 +24,7 @@ function FiveDay(props: forecasts) {
 
     return (
         <section className="card font-space" id="fiveDay">
+            <h3>Daily Forecast</h3>
             <div id="forecastContainer">
 
                 {daily.map((element, index) => (
