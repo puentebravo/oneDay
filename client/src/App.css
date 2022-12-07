@@ -26,11 +26,10 @@ body {
 /* Navbar styling */
 
 nav {
-  position: fixed;
+  position: static;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  top: 0;
   width: 100vw;
   height: 50px;
   background-color: var(--cobalt);
