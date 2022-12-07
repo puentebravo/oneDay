@@ -40,4 +40,4 @@ function ForecastCard(props: Forecast ) {
     )
 }
 
-export default ForecastCard
+export default ForecastCard;
