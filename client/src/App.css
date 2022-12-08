@@ -13,6 +13,7 @@
 
 .font-space {
   font-family: 'Roboto Mono', monospace;
+  color: var(--alabaster);
 }
 
 body {
