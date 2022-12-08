@@ -17,23 +17,21 @@ function Hourly(props: hourlyForecasts) {
             time: element.dt,
             temp: element.temp,
             feelsLike: element.feels_like,
-            weather: element.weather[0].description
+            weather: element.weather[0].description,
+            icon: element.weather[0].icon
         }
     })
 
     hours.length = 12
 
     
-   
-
-    console.log(hours)
 
     return (
         <section className="card font-space" id="hourly">
             <h3>Hourly Forecast</h3>
             <div id="hourlyContainer">
                 {hours.map( element => (
-                    <HourlyCard time={element.time} temp={element.temp} feelsLike={element.feelsLike} weather={element.weather} units={props.units}/>
+                    <HourlyCard time={element.time} temp={element.temp} feelsLike={element.feelsLike} weather={element.weather} units={props.units} icon={element.icon}/>
                 ))}
             </div>
         </section>
