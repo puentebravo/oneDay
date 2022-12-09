@@ -31,7 +31,7 @@ nav {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 100vw;
+  width: 100%;
   height: 50px;
   background-color: var(--cobalt);
 }
@@ -116,7 +116,7 @@ nav h1 {
 /* loader style */
 
 .progress {
-  width: 100px;
+  width: 200px;
   height: 20px;
   background: linear-gradient(#3d348b 0 0) left/0% 100% no-repeat #e0e2db;
   animation: progressLoader 2s infinite linear;
