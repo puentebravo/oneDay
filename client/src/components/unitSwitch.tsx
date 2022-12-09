@@ -21,7 +21,7 @@ function UnitSwitch(props: unitProp) {
         <figure id="unitToggler">
             <p className="font-space">{props.unit.toUpperCase()}</p>
             <label className="switch">
-                <input type="checkbox" onChange={handleModeSwitch}/>
+                <input type="checkbox" onChange={handleModeSwitch} />
                 <span className="slider"></span>
             </label>
         </figure>
