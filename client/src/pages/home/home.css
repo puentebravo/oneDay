@@ -63,6 +63,21 @@
   margin-left: -10px;
 }
 
+#saveBtn {
+  margin-top: 5px;
+  margin-bottom: 0px;
+}
+
+/* Control panel styling */
+
+#controlBar {
+  width: 80%;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 /* Toggle styling */
 
 #unitToggler {
@@ -72,8 +87,10 @@
   flex-direction: column;
   width: 80px;
   text-align: center;
-  margin: auto;
-  margin-top: 5vh;
+}
+
+#unitToggler p {
+  margin-bottom: 5px;
 }
 
 .switch {
@@ -135,8 +152,7 @@ input:checked + .slider:before {
 
 #weatherContainer {
   color: var(--alabaster);
-  margin-top: 100px;
-  padding: 10px;
+  margin-top: 5px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr;
@@ -224,3 +240,4 @@ input:checked + .slider:before {
   max-width: 150px;
   overflow-wrap: break-word;
 }
+
