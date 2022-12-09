@@ -8,6 +8,7 @@ import { weatherResponse } from "../../interfaces";
 import UnitSwitch from "../../components/unitSwitch";
 import FiveDay from "../../components/fiveDay";
 import Hourly from "../../components/hourly";
+import SaveBtn from "../../components/saveBtn";
 
 
 
@@ -75,7 +76,10 @@ function Home() {
         <>
             <Navbar />
             <SearchBar city={city} setCity={setCity} getCityWeather={getCityWeather} units={units} />
-            <UnitSwitch unit={units} setUnit={setUnits}/>
+            <section id="controlBar">
+                <UnitSwitch unit={units} setUnit={setUnits} />
+                <SaveBtn />
+            </section>
 
             {weatherData ?
 
@@ -84,6 +88,7 @@ function Home() {
                     <Hourly hourly={weatherData.hourly} units={units} />
                     <FiveDay dailyForecasts={weatherData.daily} units={units} />
                 </main>
+
                 : <ProgressBar />
 
             }
