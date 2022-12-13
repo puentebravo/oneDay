@@ -9,6 +9,7 @@ import UnitSwitch from "../../components/unitSwitch";
 import FiveDay from "../../components/fiveDay";
 import Hourly from "../../components/hourly";
 import SaveBtn from "../../components/saveBtn";
+import Modal from "../../components/modal";
 
 
 
@@ -22,6 +23,8 @@ interface Coords {
 function Home() {
 
     const [city, setCity] = useState<string>("")
+
+    const [show, setShow] = useState<boolean>(false)
 
     const [weatherData, setWeatherData] = useState<weatherResponse>()
 
@@ -78,8 +81,9 @@ function Home() {
             <SearchBar city={city} setCity={setCity} getCityWeather={getCityWeather} units={units} />
             <section id="controlBar">
                 <UnitSwitch unit={units} setUnit={setUnits} />
-                <SaveBtn />
+                <SaveBtn setStatus={setShow} />
             </section>
+            
 
             {weatherData ?
 
@@ -92,6 +96,7 @@ function Home() {
                 : <ProgressBar />
 
             }
+            <Modal status={show} setStatus={setShow} />
 
 
         </>
