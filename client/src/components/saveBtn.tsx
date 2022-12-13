@@ -1,9 +1,18 @@
 import React from "react";
 
+interface saveFunctions {
+    setStatus: (params: any) => any
+}
 
-function SaveBtn() {
 
-    return <button className="button" id="saveBtn" >SAVE</button>
+function SaveBtn(props: saveFunctions) {
+
+    const handleOpen = () => {
+        props.setStatus(true)
+        console.log("clicked")
+    }
+
+    return <button className="button" id="saveBtn" onClick={handleOpen}>SAVE</button>
 }
 
 
