@@ -16,6 +16,12 @@
   color: var(--alabaster);
 }
 
+.text-lead {
+  color: var(--gold);
+  text-align: center;
+  font-size: larger;
+}
+
 body {
   background-color: var(--space);
   background-image: url("./assets/images/nasaSatellite.jpg");
@@ -165,6 +171,50 @@ nav h1 {
   border-bottom: 1px dotted var(--alabaster);
 }
 
+.modal-body form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Input styles */
+
+.textEntry {
+  width: 80%;
+  margin: 10px;
+  border-radius: 5px;
+  border-color: var(--slate);
+  padding: 12px 24px;
+  background-color: transparent;
+  transition: transform 250ms ease-in-out;
+  font-size: 14px;
+  line-height: 18px;
+  color: var(--alabaster);
+  background-color: transparent;
+  background-size: 18px 18px;
+  background-position: 95% center;
+  border-radius: 5px;
+  border: 1px solid var(--alabaster);
+  transition: all 250ms ease-in-out;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+.textEntry::placeholder {
+  color: var(--alabaster);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.textEntry:hover, 
+.textEntry:focus {
+  padding: 12px 0;
+  outline: 0;
+  border: 1px solid transparent;
+  border-bottom: 1px solid var(--alabaster);
+  border-radius: 0;
+  background-position: 100% center;
+}
 
 /* loader style */
 
