@@ -52,7 +52,7 @@
   padding: 12px 0;
   outline: 0;
   border: 1px solid transparent;
-  border-bottom: 1px solid #575756;
+  border-bottom: 1px solid var(--alabaster);
   border-radius: 0;
   background-position: 100% center;
 }
@@ -192,20 +192,8 @@ input:checked + .slider:before {
   grid-area: fiveDay;
 }
 
-#fiveDay h3 {
-  color: var(--gold);
-  text-align: center;
-  font-size: larger;
-}
-
 #hourly {
   grid-area: hourly;
-}
-
-#hourly h3 {
-  color: var(--gold);
-  text-align: center;
-  font-size: larger;
 }
 
 #forecastContainer {
