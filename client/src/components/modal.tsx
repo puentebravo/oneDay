@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { useFormik } from "formik";
+import { response } from "express";
 
 interface modalOpts {
     status: boolean,
@@ -9,8 +10,32 @@ interface modalOpts {
 
 function Modal(props: modalOpts) {
 
+    const [file, setFile] = useState<File>()
+
+    const [link, setLink] = useState<string>()
+
     const handleClose = () => {
         props.setStatus(false)
+    }
+
+
+    async function handleFileUpload(event: React.ChangeEvent<HTMLInputElement>) {
+        console.log("this is working.")
+
+        const fileList = event.target.files
+
+        if (fileList) {
+            setFile(fileList[0])
+
+            const newLink = await fetch("/api/getSignedUrl")
+
+            const newLinkData = await newLink.json()
+
+            setLink(newLinkData.fetchUrl)
+
+            console.log(newLinkData)
+
+        }
     }
 
 
@@ -21,7 +46,22 @@ function Modal(props: modalOpts) {
             photo: "",
         },
         onSubmit: values => {
-            alert(JSON.stringify(values, null, 2))
+            if (link) {
+                fetch(link, {
+                    method: "PUT",
+                    mode: "cors",
+                    credentials: "include",
+                    body: file, 
+                    headers: {
+                        "Access-Control-Allow-Origin": "oneday001.s3.us-east-2.amazonaws.com"
+                    }
+                }).then( response => {
+                    response.json()
+                }).then( data => {
+                    console.log(data, values)
+                })
+            }
+            
         }
     })
 
@@ -41,7 +81,7 @@ function Modal(props: modalOpts) {
                         <input className="textEntry" id="story" name="story" type="text" onChange={formik.handleChange} />
 
                         <label htmlFor="photo">Upload a photo to capture your day</label>
-                        <input className="textEntry" id="photo" name="photo" type="file" capture="environment" accept="image/*" onChange={formik.handleChange} />
+                        <input className="textEntry" id="photo" name="photo" type="file" capture="environment" accept="image/*" onChange={handleFileUpload} />
                         <button className="button" type="submit">SUBMIT</button>
                     </form>
                 </div>
