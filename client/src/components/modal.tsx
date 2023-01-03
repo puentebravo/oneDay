@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useFormik } from "formik";
-import { response } from "express";
+
 
 interface modalOpts {
     status: boolean,
@@ -48,12 +48,10 @@ function Modal(props: modalOpts) {
         onSubmit: values => {
             if (link) {
                 fetch(link, {
-                    method: "PUT",
-                    mode: "cors",
-                    credentials: "include",
+                    method: "POST",
                     body: file, 
                     headers: {
-                        "Access-Control-Allow-Origin": "oneday001.s3.us-east-2.amazonaws.com"
+                        "Access-Control-Allow-Origin": "http://localhost:3000"
                     }
                 }).then( response => {
                     response.json()
