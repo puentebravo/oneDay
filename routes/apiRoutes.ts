@@ -61,7 +61,7 @@ router.get("/api/getSignedUrl", async (req: Request, res: Response) => {
   
   const bucketParams = {
     Bucket: "oneday001", 
-    Key: `Photo_${Date.now().toLocaleString()}`,
+    Key: `Photo_${Date.now()}`,
     Body: "Body"
   }
   
