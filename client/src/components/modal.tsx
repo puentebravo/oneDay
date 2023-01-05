@@ -48,10 +48,10 @@ function Modal(props: modalOpts) {
         onSubmit: values => {
             if (link) {
                 fetch(link, {
-                    method: "POST",
+                    method: "PUT",
                     body: file, 
                     headers: {
-                        "Access-Control-Allow-Origin": "http://localhost:3000"
+                        "Origin": "http://localhost:3000",
                     }
                 }).then( response => {
                     response.json()
