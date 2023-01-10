@@ -62,13 +62,13 @@ router.get("/api/getSignedUrl", async (req: Request, res: Response) => {
   const bucketParams = {
     Bucket: "oneday001", 
     Key: `Photo_${Date.now()}`,
-    Body: "Body"
+    contentType: "image/*"
   }
   
   const command = new PutObjectCommand(bucketParams);
 
   const signedUrl = await getSignedUrl(s3Client, command, {
-    expiresIn: 3600,
+    expiresIn: 30000,
   });
 
   console.log("SignedURL sent")
