@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import { useFormik } from "formik";
+import { currentWeatherObj } from "../interfaces";
+
 
 
 interface modalOpts {
     status: boolean,
     setStatus: (params: any) => any
+    weatherData: currentWeatherObj
+
 }
 
 
@@ -13,6 +17,8 @@ function Modal(props: modalOpts) {
     const [file, setFile] = useState<File>()
 
     const [link, setLink] = useState<string>()
+
+    const [key, setKey] = useState<string>()
 
     const handleClose = () => {
         props.setStatus(false)
@@ -33,6 +39,8 @@ function Modal(props: modalOpts) {
 
             setLink(newLinkData.fetchUrl)
 
+            setKey(newLinkData.key)
+
             console.log(newLinkData)
 
         }
@@ -42,25 +50,51 @@ function Modal(props: modalOpts) {
     const formik = useFormik({
         initialValues: {
             title: "",
-            story: "",
-            photo: "",
+            story: ""
         },
         onSubmit: values => {
             if (link) {
                 fetch(link, {
                     method: "PUT",
-                    body: file, 
+                    body: file,
                     headers: {
                         "Origin": "http://localhost:3000",
                     }
-                }).then( response => {
+                }).then(response => {
                     response.json()
-                }).then( data => {
+                }).then(data => {
                     console.log(data, values)
-                    handleClose()
+
+                    const saveData = {
+                        title: values.title,
+                        date: props.weatherData.dt.toString(),
+                        temp: props.weatherData.temp.toString(),
+                        feel: props.weatherData.feels_like.toString(),
+                        weather: props.weatherData.weather[0].description,
+                        story: values.story,
+                        photoSrc: key
+                    }
+                    
+                    console.log(saveData)
+
+                    fetch("/api/saveDate", {
+                        method: "POST",
+                        body: JSON.stringify(saveData),
+                        headers: {
+                            "Content-Type": "application/json"
+                        }
+                    }).then( data => {
+                        data.json();
+                    }).then( response => {
+                        console.log("Success", response)
+                        handleClose()
+                    }).catch( err => {
+                        console.log(err)
+                        handleClose()
+                    })
                 })
             }
-            
+
         }
     })
 
