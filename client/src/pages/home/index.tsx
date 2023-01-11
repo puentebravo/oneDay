@@ -86,17 +86,18 @@ function Home() {
             
 
             {weatherData ?
-
+                <>
                 <main id="weatherContainer">
                     <CurrentTemp current={weatherData.current.temp} icon={weatherData.current.weather[0].icon} sunrise={weatherData.current.sunrise} sunset={weatherData.current.sunset} temp={weatherData.current.temp} feelsLike={weatherData.current.feels_like} windSpeed={weatherData.current.wind_speed} UVI={weatherData.current.uvi} humidity={weatherData.current.humidity} units={units} />
                     <Hourly hourly={weatherData.hourly} units={units} />
                     <FiveDay dailyForecasts={weatherData.daily} units={units} />
                 </main>
-
+                <Modal status={show} setStatus={setShow} weatherData={weatherData.current}/>
+                </>
                 : <ProgressBar />
 
             }
-            <Modal status={show} setStatus={setShow} />
+            
 
 
         </>
