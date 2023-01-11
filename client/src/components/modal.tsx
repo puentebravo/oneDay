@@ -57,6 +57,7 @@ function Modal(props: modalOpts) {
                     response.json()
                 }).then( data => {
                     console.log(data, values)
+                    handleClose()
                 })
             }
             
