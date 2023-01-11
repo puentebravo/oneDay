@@ -61,7 +61,7 @@ router.get("/api/getSignedUrl", async (req: Request, res: Response) => {
   
   const bucketParams = {
     Bucket: "oneday001", 
-    Key: `Photo_${Date.now()}`,
+    Key: `Photo_${new Date().toDateString().replaceAll(" ", "")}`,
     contentType: "image/*"
   }
   
@@ -72,8 +72,10 @@ router.get("/api/getSignedUrl", async (req: Request, res: Response) => {
   });
 
   console.log("SignedURL sent")
+  console.log(bucketParams.Key)
   res.json({
     fetchUrl: signedUrl,
+    key: bucketParams.Key
   });
 });
 
