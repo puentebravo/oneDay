@@ -41,8 +41,6 @@ function Modal(props: modalOpts) {
 
             setKey(newLinkData.key)
 
-            console.log(newLinkData)
-
         }
     }
 
@@ -74,8 +72,7 @@ function Modal(props: modalOpts) {
                         story: values.story,
                         photoSrc: key
                     }
-                    
-                    console.log(saveData)
+
 
                     fetch("/api/saveDate", {
                         method: "POST",
@@ -83,12 +80,11 @@ function Modal(props: modalOpts) {
                         headers: {
                             "Content-Type": "application/json"
                         }
-                    }).then( data => {
+                    }).then(data => {
                         data.json();
-                    }).then( response => {
-                        console.log("Success")
+                    }).then(response => {
                         handleClose()
-                    }).catch( err => {
+                    }).catch(err => {
                         console.log(err)
                         handleClose()
                     })
