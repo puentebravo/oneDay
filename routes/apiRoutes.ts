@@ -100,7 +100,7 @@ router.post(
     const data = await prisma.savedDates.create({
       data: {
         title: req.body.title,
-        date: new Date(req.body.date),
+        date: req.body.date,
         high: req.body.high,
         low: req.body.low,
         weather: req.body.weather,
@@ -109,7 +109,7 @@ router.post(
       },
     });
 
-    console.log("Route: saveDate reached");
+    console.log(data, "Route: saveDate reached");
     res.json(data);
   }
 );
