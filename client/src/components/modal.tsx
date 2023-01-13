@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { useFormik } from "formik";
-import { currentWeatherObj } from "../interfaces";
+import { forecastObj } from "../interfaces";
 
 
 
 interface modalOpts {
     status: boolean,
     setStatus: (params: any) => any
-    weatherData: currentWeatherObj
+    weatherData: forecastObj
 
 }
 
@@ -67,9 +67,9 @@ function Modal(props: modalOpts) {
 
                     const saveData = {
                         title: values.title,
-                        date: props.weatherData.dt.toString(),
-                        temp: props.weatherData.temp.toString(),
-                        feel: props.weatherData.feels_like.toString(),
+                        date: new Date(props.weatherData.dt * 1000).toLocaleDateString(),
+                        high: props.weatherData.temp.max.toString(),
+                        low: props.weatherData.temp.min.toString(),
                         weather: props.weatherData.weather[0].description,
                         story: values.story,
                         photoSrc: key
@@ -86,7 +86,7 @@ function Modal(props: modalOpts) {
                     }).then( data => {
                         data.json();
                     }).then( response => {
-                        console.log("Success", response)
+                        console.log("Success")
                         handleClose()
                     }).catch( err => {
                         console.log(err)
