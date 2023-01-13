@@ -92,7 +92,7 @@ function Home() {
                     <Hourly hourly={weatherData.hourly} units={units} />
                     <FiveDay dailyForecasts={weatherData.daily} units={units} />
                 </main>
-                <Modal status={show} setStatus={setShow} weatherData={weatherData.current}/>
+                <Modal status={show} setStatus={setShow} weatherData={weatherData.daily[0]}/>
                 </>
                 : <ProgressBar />
 
