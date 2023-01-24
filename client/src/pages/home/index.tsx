@@ -50,11 +50,17 @@ function Home() {
         const jsonData = await data.json()
 
         setWeatherData(jsonData)
+        localStorage.setItem("weatherData", JSON.stringify(jsonData))
         console.log(jsonData)
     }
 
     useEffect(() => {
 
+        let cachedWeather = localStorage.getItem("weatherData")
+
+        if (cachedWeather) {
+            setWeatherData(JSON.parse(cachedWeather));
+        }
 
         if ("geolocation" in navigator) {
             navigator.geolocation.getCurrentPosition((position) => {
