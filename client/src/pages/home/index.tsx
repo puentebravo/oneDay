@@ -51,7 +51,7 @@ function Home() {
 
         setWeatherData(jsonData)
         localStorage.setItem("weatherData", JSON.stringify(jsonData))
-        console.log(jsonData)
+        
     }
 
     useEffect(() => {
