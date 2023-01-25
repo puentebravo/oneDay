@@ -67,5 +67,15 @@ interface weatherResponse {
 
 }
 
+interface SaveData {
+    date: String,
+    title: String,
+    high: String,
+    low: String,
+    weather: String,
+    story: String,
+    photoSrc: String
+}
 
-export type {weatherResponse, forecastObj, currentWeatherObj, currentWeatherDetails}
+
+export type {weatherResponse, forecastObj, currentWeatherObj, currentWeatherDetails, SaveData}
