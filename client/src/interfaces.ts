@@ -68,6 +68,7 @@ interface weatherResponse {
 }
 
 interface SaveData {
+    id: String,
     date: String,
     title: String,
     high: String,
