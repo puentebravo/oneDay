@@ -39,7 +39,7 @@ function Saved() {
                 {
                     saveData ? 
                     saveData.map( element => (
-                        <DateCard date={element.date} title={element.title} high={element.high} low={element.low} weather={element.weather} story={element.story} photoSrc={element.photoSrc}/>
+                        <DateCard id={element.id} date={element.date} title={element.title} high={element.high} low={element.low} weather={element.weather} story={element.story} photoSrc={element.photoSrc} />
                     ))
 
                     : <ProgressBar />
