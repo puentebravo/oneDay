@@ -1,20 +1,13 @@
 import React from "react";
+import { SaveData } from "../interfaces";
 
-interface SaveData {
-    date: String,
-    title: String,
-    high: String,
-    low: String,
-    weather: String,
-    story: String,
-    photoSrc: String
-}
 
 function DateCard(props: SaveData) {
 
+
     return (
 
-        <section className="card">
+        <section className="card" >
             <div className="dCardHeader">
                 <h2 className="font-space text-lead">{props.date}</h2>
             </div>
