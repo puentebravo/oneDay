@@ -33,7 +33,7 @@ function Modal(props: modalOpts) {
         if (fileList) {
             setFile(fileList[0])
 
-            const newLink = await fetch("/api/getSignedUrl")
+            const newLink = await fetch("/api/putSignedUrl")
 
             const newLinkData = await newLink.json()
 
