@@ -13,7 +13,7 @@ function DateCard(props: SaveData) {
         <>
             <section className="card" >
                 <div className="dCardHeader">
-                    <h2 className="font-space text-lead">{props.date}</h2>
+                    <h2 className="font-space text-header">{props.date}</h2>
                 </div>
                 <div className="dCardBody">
                     <p>{props.title}</p>
