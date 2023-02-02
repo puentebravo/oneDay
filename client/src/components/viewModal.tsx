@@ -19,7 +19,7 @@ function ViewModal(props: modalOpts) {
         <section className={`modal ${props.status ? 'show' : ""}`} onClick={handleClose}>
             <div className="modal-content font-space" onClick={e => e.stopPropagation()}>
                 <div className="modal-header">
-                    <h3 className="modal-title text-lead">EVENT_DATA: {data.title}</h3>
+                    <h3 className="modal-title text-header">EVENT_DATA: {data.title}</h3>
                 </div>
                 <div className="modal-body">
                     <p>{data.story}</p>
