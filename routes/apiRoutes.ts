@@ -2,7 +2,7 @@ import express from "express";
 import { PrismaClient } from "@prisma/client";
 import { Request, Response } from "express";
 import { body, validationResult } from "express-validator";
-import { GetObjectCommand, PutObjectCommand } from "@aws-sdk/client-s3";
+import { GetObjectCommand, PutObjectCommand, RestoreObjectCommand } from "@aws-sdk/client-s3";
 import { s3Client } from "../utils/awsS3Client";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 const fetch = require("node-fetch");
@@ -57,26 +57,46 @@ router.get(
   }
 );
 
-router.get("/api/getSignedUrl", async (req: Request, res: Response) => {
-  
-  const bucketParams = {
-    Bucket: "oneday001", 
+router.get("/api/putSignedUrl", async (req: Request, res: Response) => {
+  const putBucketParams = {
+    Bucket: "oneday001",
     Key: `Photo_${new Date().toDateString().replaceAll(" ", "")}`,
-    contentType: "image/*"
-  }
-  
-  const command = new PutObjectCommand(bucketParams);
+    contentType: "image/*",
+  };
+
+  const command = new PutObjectCommand(putBucketParams);
 
   const signedUrl = await getSignedUrl(s3Client, command, {
     expiresIn: 30000,
   });
 
-  console.log("SignedURL sent")
-  console.log(bucketParams.Key)
+  console.log("SignedURL sent");
+  console.log(putBucketParams.Key);
   res.json({
     fetchUrl: signedUrl,
-    key: bucketParams.Key
+    key: putBucketParams.Key,
   });
+});
+
+router.get("/api/getSignedUrl/:key", async (req: Request, res: Response) => {
+  const getBucketParams = {
+    Bucket: "oneday001",
+    Key: req.params.key,
+    contentType: "image/*",
+  };
+
+  const command = new GetObjectCommand(getBucketParams);
+
+  const signedGetUrl = await getSignedUrl(s3Client, command, {
+    expiresIn: 30000,
+  })
+
+  console.log("GET SignedURL sent: ", signedGetUrl);
+  console.log(getBucketParams.Key)
+  res.json({
+    fetchURL: signedGetUrl
+  })
+  
 });
 
 router.post(
