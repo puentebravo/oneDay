@@ -26,7 +26,6 @@ body {
   background-color: var(--space);
   background-image: url("./assets/images/nasaSatellite.jpg");
   background-repeat: no-repeat;
-  background-size: cover;
   font-family: Helvetica, Arial, sans-serif;
 }
 
