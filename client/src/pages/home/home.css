@@ -10,9 +10,11 @@
 
 #searchBar {
   position: relative;
+  padding: 1rem;
   margin: auto;
   width: 400px;
   margin-top: 50px;
+  margin-bottom: 1.5rem;
   display: flex;
 }
 
@@ -71,7 +73,6 @@
 /* Control panel styling */
 
 #controlBar {
-  width: 80%;
   margin: auto;
   display: flex;
   flex-direction: row;
@@ -155,11 +156,10 @@ input:checked + .slider:before {
   margin-top: 5px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-template-rows: .3fr 1fr 1fr;
   grid-template-areas:
-    "ctemp hourly hourly"
-    "ctemp hourly hourly"
-    "fiveDay fiveDay fiveDay"
+    "ctemp ctemp ctemp"
+    "hourly hourly hourly"
     "fiveDay fiveDay fiveDay";
 }
 
@@ -200,7 +200,7 @@ input:checked + .slider:before {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 #hourlyContainer {
@@ -229,3 +229,19 @@ input:checked + .slider:before {
   overflow-wrap: break-word;
 }
 
+/* Media Queries  */
+
+@media only screen and (min-width: 768px) {
+  #weatherContainer {
+    color: var(--alabaster);
+    margin-top: 5px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-areas:
+      "ctemp hourly hourly"
+      "ctemp hourly hourly"
+      "fiveDay fiveDay fiveDay"
+      "fiveDay fiveDay fiveDay";
+  }
+}
