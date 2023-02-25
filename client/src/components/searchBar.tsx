@@ -23,7 +23,7 @@ function SearchBar(props: city) {
   }
 
   return (
-    <section id="searchBar">
+    <section id="searchBar" className="card">
       <button className="button" id="searchBtn" onClick={handleFormSubmit}>Search</button>
       <form>
         <label htmlFor="citySearch">
