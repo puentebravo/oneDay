@@ -85,7 +85,7 @@ function Home() {
         <>
             <Navbar />
             <SearchBar city={city} setCity={setCity} getCityWeather={getCityWeather} units={units} />
-            <section id="controlBar">
+            <section id="controlBar" className="card">
                 <UnitSwitch unit={units} setUnit={setUnits} />
                 <SaveBtn setStatus={setShow} />
             </section>
