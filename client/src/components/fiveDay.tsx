@@ -22,6 +22,8 @@ function FiveDay(props: forecasts) {
         }
     })
 
+    daily.length = 6
+
     return (
         <section className="card font-space" id="fiveDay">
             <h3 className="text-lead">Daily Forecast</h3>

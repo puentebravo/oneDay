@@ -22,7 +22,7 @@ function Hourly(props: hourlyForecasts) {
         }
     })
 
-    hours.length = 12
+    hours.length = 6
 
     
 
